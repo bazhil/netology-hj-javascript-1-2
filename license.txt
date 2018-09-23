@@ -1,10 +1,10 @@
 
 
 <!--
-Copyright (c) 2018 by bazhil (https://codepen.io/bazhil/pen/aaGLEK)
+Copyright (c) 2018 by bazhil (https://codepen.io/bazhil/pen/LJmdZw)
 
 
-Fork of an original work by Dima Fitiskin (https://codepen.io/dfitiskin/pen/BWvrYW)
+Fork of an original work by Dima Fitiskin (https://codepen.io/dfitiskin/pen/LWMvOb)
 
 
 
