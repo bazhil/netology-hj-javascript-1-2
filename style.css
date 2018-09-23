@@ -1,115 +1,192 @@
-@import url('https://fonts.googleapis.com/css?family=Anton|Roboto');
-
-body {
-  width: 1280px;
-  margin: 0 auto;
-  font-family: 'Anton', sans-serif;
-  color: #333333;
-  background-color: #ece9e9;
-  padding: 150px 0;
-}
-
-p {
-  margin: 10px 0;
-}
-
-.product-item {
+* {
   box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  width: 100%;
-  padding: 50px;
-  min-height: 750px;
-  box-shadow: 1px 1px 10px 5px #dddddd;
-  background-color: #ffffff;
 }
 
-.product-gallery {
-  width: 60%;
-  border: 1px solid #dddddd;
+html {
+  background: #444444;
+}
+
+.container {
+  width: 130px;
+  margin: 20px auto;
+  text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
-.product-gallery img {
+.envelope {
+  background: #ca336d;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  box-shadow: 0 5px 0 #3a3d3c;
+  margin: 85px 0 30px 0;
+  z-index: 1;
+}
+
+.envelope:before,
+.envelope:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+}
+
+.envelope:before {
+  right: 0;
+  border-bottom: 0px solid transparent;
+  border-top: 80px solid transparent;
+  border-right: 130px solid #dc447f;
+  z-index: 1;
+}
+
+.envelope:after {
+  left: 0;
+  border-bottom: 0px solid transparent;
+  border-top: 80px solid transparent;
+  border-left: 130px solid #ea4c89;
+  z-index: 1;
+}
+
+.open {
+  border-right: 65px solid transparent;
+  border-top: 40px solid #c8336c;
+  border-left: 65px solid transparent;
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  transform-origin: 0% 0%;
+}
+
+.paper {
+  width: 110px;
+  height: 75px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -55px;
+  background: #f2f2f2;
+  z-index: 0;
+}
+
+.paper:before {
+  content: "";
+  position: absolute;
+}
+
+.paper:before {
+  width: 110px;
+  height: 75px;
+  background: rgba(177,177,177,0.1);
+  bottom: 0;
+  left: 0;
+}
+
+.noti {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  color: #fff;
+  font: bold 20px/36px "Helvetica";
+  text-align: center;
+  background: #2ecc71;
+  box-shadow: 0 4px 0 rgba(216,217,216, 0.7);
+  opacity: 0;
+}
+
+ul {
+  margin: 25px auto 0 auto;
+  padding: 0;
   display: block;
-  min-height: 100%;
-  height: 100%;
-  min-width: 100%;
+  width: 80%;
 }
 
-.product-data {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
+li {
+  list-style: none;
+  background: #d3d3d3;
+  width: 100%;
+  height: 5px;
+  margin-bottom: 5px;
 }
 
-.product-firm {
-  text-transform: uppercase;
-  font-size: 25px;
+li:nth-child(1) {
+  width: 50%;
 }
 
-.product-name {
-  font-size: 35px;
-  line-height: 24px;
-  margin: 15px 0;
+li:nth-child(2) {
+  margin-bottom: 20px;
+  width: 20%;
 }
 
-.product-price {
-  font-size: 18px;
-  color: #666666;
-  margin: 10px 0;
-}
-
-.product-price::before {
-  content: "$ ";
-}
-
-.product-colors {
-  font-size: 14px;
-  color: #0089cf;
-  text-transform: uppercase;
-}
-
-.product-colors::before {
-  content: "Colors: ";
-  color: #666666;
-}
-
-.product-size {
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.product-size::before {
-  content: "Sizes: ";
-}
-
-.buy-btn {
-  font-family: 'Anton', sans-serif;
-  font-size: 18px;
-  color: #ffffff;
-  text-transform: uppercase;
-  padding: 15px 55px;
-  background-color: #333333;
+input {
   border: none;
-  transition: 0.4s;
-  margin: 15px 0;
+  background: #878387;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
+  font: bold 13px "helvetica";
+  padding: 8px 15px;
+  box-shadow: 0 3px 0 #2a2c2b;
 }
 
-.buy-btn:hover,
-.buy-btn:focus,
-.buy-btn:active {
-  box-shadow: 1px 1px 15px 1px #999;
-  transition: 0.4s;
-  outline: none;
-  cursor: pointer;
+input:active,
+input:hover {
+   box-shadow: 0 1px 0 #2a2c2b;
 }
 
-.product-info {
-  margin: 50px 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #666666;
+/* TRIGGER ANIMATIONS */
+.is-active .open {
+  animation: foldUp 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.is-active .paper {
+  animation: paperUp 1.5s ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s; /* W3C and Opera */
+}
+
+.is-active .noti {
+  animation: noti 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 2s; /* W3C and Opera */
+}
+
+/* ANIMATIONS */
+@keyframes foldUp {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform:rotateX(180deg);
+    z-index: 0;
+  }
+}
+
+@keyframes noti {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+   }
+}
+
+
+@keyframes paperUp {
+  from {
+      height: 75px;
+  } 60% {
+      height: 130px;
+  } 70% {
+      height: 110px;
+  } 80% {
+      height: 130px;
+  } 90% {
+      height: 120px;
+  } 100% {
+      height: 130px;
+  }
 }
